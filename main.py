@@ -21,7 +21,7 @@ if __name__ == '__main__':
     data = xlsxLoader.load_all_xlsx("files")
     week_start = lambda data: data['date'] - data['date'].dt.weekday * timedelta(days=1)
     grouped_data = data.groupby(week_start(data)).apply(aggregate)
-    grouped_data.to_csv('grouped_data.csv')
+    grouped_data.to_csv('files/grouped_data.csv')
     correlation_coefficient = data['installs'].corr(data['revenue'] - data['costs'])
     print(f"correlation coefficient = {correlation_coefficient}")
     pd.options.display.max_columns = None
